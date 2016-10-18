@@ -1,0 +1,214 @@
+<div id="main" role="main">
+
+			<!-- RIBBON -->
+			<div id="ribbon">
+                <!-- breadcrumb -->
+				<ol class="breadcrumb">
+					<li>Home</li><li>Settings</li><li>Company Info</li>
+				</ol>
+				<!-- end breadcrumb -->
+
+				<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:
+
+				<span class="ribbon-button-alignment pull-right">
+				<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+				</span> -->
+
+			</div>
+			<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+
+				<!--div class="row">
+					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+						<h1 class="page-title txt-color-blueDark"><i class="fa fa-lg fa-fw fa-puzzle-piece"></i> Settings <span>> Company Information</span></h1>
+					</div>
+					
+				</div-->
+				<!-- widget grid -->
+				<section id="widget-grid" class="">
+                    <!-- row -->
+                    <div class="row">
+				   <article class="col-sm-12 col-md-12 col-lg-12">
+							<!-- new widget -->
+							<div class="jarviswidget jarviswidget-color-blue" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false">
+
+								<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+
+								-->
+
+								<header>
+									<span class="widget-icon">  </span>
+									<h2> Company Information </h2>
+									<!-- <div class="widget-toolbar">
+									add: non-hidden - to disable auto hide
+
+									</div>-->
+								</header>
+
+								<!-- widget div-->
+								<div>
+				            <form class="smart-form">
+				                <header>Company Information</header>
+				                <fieldset>
+								<div class="row">
+									<section class="col col-4">
+									    <label class="label">Company Name</label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Company Name" ng-model="newcompany.name">
+										</label>
+									</section>
+									<section class="col col-4">
+									    <label class="label">Display Name</label>
+										<label class="input"> <i class="icon-append fa fa-user"></i>
+											<input type="text" name="name" placeholder="Display Name" ng-model="newcompany.dispaly">
+										</label>
+									</section>
+									 <section class="col col-4">
+									<label class="label">Incorporation Date</label>
+										<label class="input"> <i class="icon-append fa fa-calendar"></i>
+											<input type="text" name="finishdate" id="finishdate" placeholder="Incorporation Date" ng-model="newcompany.incorpdate">
+										</label>
+									</section>
+								</div>
+                                    <div class="row">
+									<section class="col col-4">
+									<label class="label">Fixed Phone Number</label>
+										<label class="input"> <i class="icon-append fa fa-phone"></i>
+											<input type="tel" name="phone" placeholder="Landline" data-mask="(999) 999-9999" ng-model="newcompany.landline">
+										</label>
+									</section>
+									<section class="col col-4">
+									    <label class="label">Mobile Number</label>
+										<label class="input"> <i class="icon-append fa fa-phone"></i>
+											<input type="tel" name="mobile" placeholder="Mobile Number" data-mask="(999) 999-9999" ng-model="newcompany.mobile">
+										</label>
+									</section>
+                                    <section class="col col-4">
+									<label class="label">Email</label>    
+										<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+											<input type="email" name="email" placeholder="E-mail" ng-model="newcompany.email">
+										</label>
+									</section>
+								</div>
+								
+                                <div class="row">
+									<section class="col col-4">
+                                       <label class="label">Corporate Address</label>
+                    					<label class="textarea textarea-resizable"> 		<textarea rows="3" class="custom-scroll" placeholder="Corporate Address" ng-model="newcompany.corpaddress"></textarea> 
+										</label>
+								    </section>
+									<section class="col col-4">
+                                       <label class="label">Mailing Address</label>
+                    					<label class="textarea textarea-resizable"> 		<textarea rows="3" class="custom-scroll" placeholder="Mailing Address" ng-model="newcompany.mailaddress"></textarea> 
+										</label>
+								    </section>
+                                   
+									<section class="col col-4">
+									<label class="label">Logo</label>
+										<div class="input input-file">
+										<span class="button"><input id="file2" type="file" name="file2" onchange="this.parentNode.nextSibling.value = this.value">Browse</span><input type="text" placeholder="Logo" readonly="">
+									</div>
+									</section>
+								</div>
+								
+								<div class="row">
+									
+									<section class="col col-4">
+									    <label class="label">Type</label>
+										<div class="inline-group">
+														<label class="radio">
+															<input type="radio" name="radio-inline" value="dealer" ng-model="newcompany.companytype">
+															<i></i>Dealer</label>
+														<label class="radio">
+															<input type="radio" name="radio-inline" value="retailer" ng-model="newcompany.companytype">
+															<i></i>Retailer</label>
+													</div>
+									</section>
+								</div>
+							</fieldset>
+                            <footer>
+												<button class="btn btn-primary" ng-click="submitCompany()">
+													Submit
+												</button>
+                               <button class="btn btn-success" ng-click="viewCompany()">
+													View
+												</button>
+                                <b>{{status}}</b>
+											</footer>                        
+				            </form>
+				       
+								</div>
+								<!-- end widget div -->
+							</div>
+							<!-- end widget -->
+
+						</article>
+				</div>
+					
+
+					<!-- end row -->
+
+				</section>
+				<!-- end widget grid -->
+
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>
+
+<script type="text/javascript">
+		
+		// DO NOT REMOVE : GLOBAL FUNCTIONS!
+		
+		$(document).ready(function() {
+			
+			pageSetUp();
+			
+			// PAGE RELATED SCRIPTS
+		
+			// switch style change
+			$('input[name="checkbox-style"]').change(function() {
+				//alert($(this).val())
+				$this = $(this);
+		
+				if ($this.attr('value') === "switch-1") {
+					$("#switch-1").show();
+					$("#switch-2").hide();
+				} else if ($this.attr('value') === "switch-2") {
+					$("#switch-1").hide();
+					$("#switch-2").show();
+				}
+		
+			}); 
+			
+			// tab - pills toggle
+			$('#show-tabs').click(function() {
+				$this = $(this);
+				if($this.prop('checked')){
+					$("#widget-tab-1").removeClass("nav-pills").addClass("nav-tabs");
+				} else {
+					$("#widget-tab-1").removeClass("nav-tabs").addClass("nav-pills");
+				}
+				
+			});			
+		
+		});
+
+		</script>			

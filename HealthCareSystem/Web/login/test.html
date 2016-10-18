@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+         $(document).ready(function () {   
+             var keys = [];
+             
+                $('#resultTable tr').click(function (event) {
+                     //alert($(this).attr('id')); //trying to alert id of the clicked row   
+                     //$(#resultTable tr).attr('id').remove();
+                     //var row = $(this).attr('id');
+                    // alert(document.getElementById($(this).attr('id')) );
+                     row = document.getElementById($(this).attr('id')) ;
+                    //  (row).parentNode.removeChild(row);
+                       keys.push($(this).attr('id'));
+                       console.log(row);
+                       console.log(row.cells[0])
+                });
+                
+                
+                $("#resultTable").on("click",function(){
+                    //$('input:checked').each(function() {
+                   // $(this).closest('tr').remove();
+                    //alert($(this).closest('tr'));
+                     //($(this).attr('id')).parentNode.removeChild($(this).attr('id'));
+
+                     //});
+                     //$('#resultTable tr').remove($(this).attr('id'));
+                    
+ });
+ 
+ $('#clicked').click(function(){
+     alert(keys);
+ });
+ 
+ 
+            });
+           </script> 
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <table id="resultTable">
+        <tr id="first">
+         <td>c1</td>      
+         <td>c2</td>
+          <td>xxx</td>  
+        </tr>
+        <tr id="second">
+         <td>c3</td>      
+         <td>c4</td>
+          <td>ccxxx</td>  
+         </tr> 
+          <tr id="third">
+         <td>c5</td>      
+         <td>c4</td>  
+          <td>xxxx</td>  
+         </tr> 
+          <tr id="four">
+         <td>c6</td>      
+         <td>c4</td> 
+          <td>xxxx</td>  
+         </tr> 
+       </table>
+        <input type="button" id="clicked" value="Click Me" />
+    </body>
+</html>

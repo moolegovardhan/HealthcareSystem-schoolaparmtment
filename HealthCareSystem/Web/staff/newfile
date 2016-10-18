@@ -1,0 +1,81 @@
+$message .= '<div><table border="1px" width="100%">';
+
+$message .= "  <tr>";
+$message .="    <td >Patient Name : </td>";
+$message .= "    <td   colspan='2' align='left'>".$appointmentDetails[0]->PatientName."</td>";
+$message .= "  </tr>";
+$message .= "  <tr>";
+$message .="    <td >Doctor Name : </td>";
+$message .= "    <td  colspan='2' align='left'>".$appointmentDetails[0]->DoctorName."</td>";
+$message .= "  </tr>";
+$message .= "  <tr>";
+$message .="    <td >Hospital Name : </td>";
+$message .= "    <td  colspan='3' align='left'>".$appointmentDetails[0]->HospitalName."</td>";
+$message .= "  </tr>";
+$message .= "  <tr>";
+$message .="    <td >Doctor Comments : </td>";
+$message .= "    <td  colspan='3' align='left'>".$presDetails[0]->description."</td>";
+$message .= "  </tr>";
+ $message .= " <tr>";
+  $message .= " <td   colspan='4' width='100%'><br/></td>";
+  $message .= " </tr>";
+  $message .= "  <tr>";
+$message .="    <td  colspan='4'>Test Prescribed : </td>";
+$message .= "  </tr>";
+$message .= " <tr>";
+  $message .= " <td  colspan='4' width='100%'><br/></td>";
+  $message .= " </tr>";
+$message .= "  <tr>";
+$message .= "    <td  colspan='4' width='100%' nowrap>";
+$message .= '<table width="100%" class="tg">';
+foreach($testDetails as $test){
+$message .= "<tr><td nowrap ><b>Test Name :</b></td><td   nowrap><i>".$test->testname."</i></td></tr>";
+ $testResultDetails = $prescription->fetchPatientAppointmentMedicalTestDetails($appointmentid, $test->id);
+  if(count($testResultDetails) > 0) {
+    foreach($testResultDetails as $data){
+      
+        $message .= "<tr><td nowrap><b>".$data->parametername." :</b></td><td nowrap><i>".$data->value." </i></td></tr>";
+     
+      }
+   $message .="<tr><td colspan='3' nowrap><hr/></td></tr>";  
+  } 
+}
+$message .= "</table>";
+$message .= "</td>";
+$message .= "  </tr>";
+ $message .= " <tr>";
+  $message .= " <td  nowrap colspan='4' width='100%'><hr/><br/></td>";
+  $message .= " </tr>";
+ $message .= " <tr>";
+$message .= "    <td  colspan='4' width='100%' nowrap>";
+$message .= "<table width='100%' border='1' class='tg'>";
+$message .=  "<tr><th  nowrap>Medicine Name</th>";
+$message .=  "<th  nowrap>Days #</th>";
+$message .=  "<th nowrap>MBF</th>";
+$message .= "<th  nowrap>MAF</th>";
+$message .= "<th  nowrap>ABF</th>";
+ $message .=  "<th nowrap>AAF</th>";
+$message .= "<th  nowrap>EBF</th>";
+ $message .=  "<th nowrap>EAF</th>";
+$message .= "<th   nowrap>Dosage</th></tr>";
+
+foreach($medicines as $data){
+
+
+        $message .=  "<tr><td nowrap>".$data->medicinename."</td>";
+        $message .=  "<td  nowrap>".$data->noofdays."</td>";
+        $message .=  "<td  nowrap>".$data->MBF."</td>";
+        $message .= "<td  nowrap>".$data->MAF."</td>";
+        $message .= "<td  nowrap>".$data->ABF."</td>";
+         $message .=  "<td nowrap>".$data->AAF."</td>";
+        $message .= "<td  nowrap>".$data->EBF."</td>";
+         $message .=  "<td  nowrap>".$data->EAF."</td>";
+        $message .= "<td nowrap>".$data->dosage."</td></tr>";
+  
+}
+
+ $message .= "</table>";
+ $message .=  "</td>";
+$message .= "  </tr>";
+
+$message .= "  </table></div>";

@@ -1,0 +1,227 @@
+<div id="main" role="main">
+
+			<!-- RIBBON -->
+			<div id="ribbon">
+                <!-- breadcrumb -->
+				<ol class="breadcrumb">
+					<li>Home</li><li>Masters</li><li>Medicine</li>
+				</ol>
+				<!-- end breadcrumb -->
+
+				<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:
+
+				<span class="ribbon-button-alignment pull-right">
+				<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+				</span> -->
+
+			</div>
+			<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+						<h1 class="page-title txt-color-blueDark"><i class="fa fa-lg fa-fw fa-puzzle-piece"></i> Masters <span>> Medicine</span></h1>
+					</div>
+					
+				</div>
+				<!-- widget grid -->
+				<section id="widget-grid" class="">
+                    <!-- row -->
+					<div class="row">
+						<article class="col-sm-12 col-md-12 col-lg-12">
+							<!-- new widget -->
+							<div class="jarviswidget jarviswidget-color-blue" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false">
+
+								<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+
+								-->
+
+								<header>
+									<span class="widget-icon">  </span>
+									<h2> Medicine Register </h2>
+									<!-- <div class="widget-toolbar">
+									add: non-hidden - to disable auto hide
+
+									</div>-->
+								</header>
+
+								<!-- widget div-->
+								<div>
+                            <form class="smart-form">
+				                <header>Medicine Register</header>
+				                <fieldset>
+								<div class="row">
+								    <section class="col col-4">
+                                       <label class="label">Medicine Name</label>
+                    					<label class="textarea textarea-resizable"> 		<textarea rows="3" class="custom-scroll" placeholder="Medicine Name" ng-model="newmedicine.name"></textarea> 
+										</label>
+								    </section>
+									<section class="col col-4">
+									    <label class="label">Category</label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Category Name" ng-model="newmedicine.category">
+										</label>
+									</section>
+									<section class="col col-4">
+									    <label class="label">Sub Category</label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Sub Category Name" ng-model="newmedicine.subcategory">
+										</label>
+									</section>
+								</div>
+                               <div class="row">
+									<section class="col col-6">
+									<label class="label">Units of Measure</label>
+										<label class="input"> <i class="icon-append fa fa-phone"></i>
+											<input type="number" name="measure" placeholder="Units of Measure"  ng-model="newmedicine.measure">
+										</label>
+									</section>
+									<section class="col col-6">
+									    <label class="label">Description</label>
+										<label class="input"> <i class="icon-append fa fa-phone"></i>
+											<input type="text" name="description" placeholder="Description" ng-model="newmedicine.description">
+										</label>
+									</section>
+								</div>
+								<div class="row">
+									<section class="col col-6">
+									    <label class="label">U D C</label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="U D C" ng-model="newmedicine.udc">
+										</label>
+									</section>
+									<section class="col col-6">
+                                           <label class="label">National Drug Council Number </label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="N D C Number" ng-model="newmedicine.ndcnum">
+										</label>
+								    </section>
+								</div>
+                                <div class="row">
+									<section class="col col-6">
+									    <label class="label">Tags </label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Tags" ng-model="newmedicine.tags">
+										</label>
+									</section>
+									<section class="col col-6">
+                                           <label class="label">Status </label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Status" ng-model="newmedicine.status">
+										</label>
+								    </section>
+								</div>								
+                                <div class="row">
+									<section class="col col-6">
+									    <label class="label">Chemical Combinations</label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Chemical Combos" ng-model="newmedicine.chem">
+										</label>
+									</section>
+									<section class="col col-6">
+                                           <label class="label">Handling Requirement </label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Handling Requirement" ng-model="newmedicine.handling">
+										</label>
+								    </section>
+								</div>
+                                <div class="row">
+									<section class="col col-6">
+									    <label class="label">Brand Name</label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Brand Name" ng-model="newmedicine.brandname">
+										</label>
+									</section>
+									<section class="col col-6">
+                                           <label class="label">Manufacturer Name </label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Manufacturer Name" ng-model="newmedicine.mfgname">
+										</label>
+								    </section>
+								</div>														<div class="row">
+									<section class="col col-6">
+									    <label class="label">MFG Code</label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Mfg Code" ng-model="newmedicine.mfgcode">
+										</label>
+									</section>
+									<section class="col col-6">
+                                           <label class="label">Medicine Type </label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Medicine Type" ng-model="newmedicine.medtype">
+										</label>
+								    </section>
+								</div>		
+								<div class="row">
+									<section class="col col-6">
+									    <label class="label">Packaging Style</label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Packaging Style" ng-model="newmedicine.pkgstyle">
+										</label>
+									</section>
+									<section class="col col-6">
+                                           <label class="label">Dealer Name </label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Dealer Name" ng-model="newmedicine.dealer">
+										</label>
+								    </section>
+								</div>
+								<div class="row">
+									<section class="col col-6">
+									    <label class="label">Image Paths</label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Image Paths" ng-model="newmedicine.imgpaths">
+										</label>
+									</section>
+									<section class="col col-6">
+                                           <label class="label">Unique Name </label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Unique Name" ng-model="newmedicine.uniquename">
+										</label>
+								    </section>
+								</div>
+							</fieldset>
+                            <footer>
+												<button class="btn btn-primary" ng-click="saveMedicine()">
+													Submit
+												</button>
+												
+											</footer>                        
+				            </form>
+									
+
+								</div>
+								<!-- end widget div -->
+							</div>
+							<!-- end widget -->
+
+						</article>
+
+					</div>
+
+					<!-- end row -->
+
+				</section>
+				<!-- end widget grid -->
+
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>

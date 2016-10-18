@@ -1,0 +1,444 @@
+<div id="main" role="main" class="js-main">
+
+			<!-- RIBBON -->
+			<div id="ribbon">
+                <!-- breadcrumb -->
+				<ol class="breadcrumb">
+					<li>Home</li><li>Settings</li><li>Generate Charges</li>
+				</ol>
+				
+                                <div class="pull-right">
+                                    <b>
+                                        <i>
+                                            <font color="#FFFFFF">
+                                                {{status}}
+                                            </font>
+                                        </i>
+                                    </b> 
+
+                                </div>     
+			</div>
+			<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content" class="row">
+
+		
+				<!-- widget grid -->
+				<section id="widget-grid" class="">
+                    <!-- row -->
+
+                            <article class="col-sm-12 col-md-12">
+                                    <!-- new widget -->
+                                    <div  class="jarviswidget jarviswidget-color-blue" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false">
+                                            <header>
+                                                    <span class="widget-icon">  </span>
+                                                    <h2> Cost Management </h2>
+                                                    <div class="btn-group-vertical pull-right">        
+                                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                                      Select Ward / Room / Operation / Services
+                                                                      <i class="fa fa-caret-down"></i>
+                                                              </button>
+                                                              <ul class="dropdown-menu pull-right">
+                                                                      <li>
+                                                                          <a href="javascript:void(0);" ng-click="fetchWards()">Ward</a>
+                                                                      </li>
+                                                                      <li>
+                                                                              <a href="javascript:void(0);" ng-click="fetchRooms()">Room</a>
+                                                                      </li>
+                                                                      <li>
+                                                                              <a href="javascript:void(0);" ng-click="fetchService()">Services</a>
+                                                                      </li>
+                                                                       <li>
+                                                                              <a href="javascript:void(0);" ng-click="fetchOperation()">Operation</a>
+                                                                      </li>
+                                                              </ul>
+                                                        </div>
+                                            </header>
+                                            <!-- widget div ward-->
+                                       <div ng-show="showWard" >
+                                         <form class="smart-form">
+				                <header>{{selectedtitle}}
+                                                    <section class="col-md-4 pull-right">
+                                                            <div class="btn btn-group-vertical pull-right"> 
+                                                                <a href="javascript:void(0);" class="btn btn-primary pull-right" ng-click="wardCreateCost()"> <hr>Submit :- Create Cost Mapping<br/><hr> </a>
+                                                            </div>
+                                                    </section>    
+                                                </header>
+                                             <br/>
+                                             <fieldset>
+                                                 <div class="row col-md-15">
+                                                     <section class="col col-md-2">
+                                                         <label class="label">Effective Date</label>
+                                                     </section>
+                                                      <section class="col col-md-4">
+                                                          <div class="input">
+                                                            <input type="date" ng-model="effectivedate" placeholder="Effective Date" required class="form-control datepicker" data-dateformat="dd/mm/yy">
+                                                          </div>
+                                                     </section>
+                                                     
+                                                 </div>
+                                             </fieldset> 
+				              <div class="col-md-15">      
+                                                       <div class="row"> 
+                                                        <section class="col col-md-3" style="padding-right:0px;">
+                                                            
+                                                            <label class="select">
+                                                                
+                                                                <select class="input" name="servicestype" id="servicestype" ng-model="wardid">
+                                                                <option value="">---Please Select Ward---</option> 
+                                                                <option ng-repeat = "item in existingWardList.responseMessageDetails.data" value="{{item.id}}">{{item.wardname}}</option> 
+                                                              </select>
+                                                            </label>
+                                                            
+                                                    </section> 
+                                                        <section class="col col-md-4">
+                                                            <table class="table table-striped table-bordered">
+                                                                <tr>
+                                                                   <th>Charges Name</th><th>Charges Cost {Rs}</th>
+                                                                </tr>
+                                                                <tr  ng-repeat="charges in existingCharges.responseMessageDetails.data | filter:search | orderBy : chargesname">
+
+                                                                    <td><label class="checkbox">
+                                                                           
+                                                                            <input type="checkbox" name="selectedcharges" value="{{charges.id}}" 
+                                                                                  ng-checked="(selectedcharges.indexOf(charges.id) != '-1')"  ng-model="selectedcharges" ng-click="prepareCharges(charges.id)">
+                                                                                    <i></i>{{charges.chargename}}
+                                                                       </label>
+                                                                    </td>
+                                                                    <td>{{charges.chargebleamount}}</td>
+                                                                   
+                                                                </tr>    
+
+                                                            </table>
+                                                        </section>
+                                                            <section class="col col-md-4">
+                                                            <table class="table table-striped table-bordered">
+                                                                <tr>
+                                                                   <th>Tax Name</th><th>Tax Percent {%}</th>
+                                                                </tr>
+                                                                <tr  ng-repeat="tax in existingTax.responseMessageDetails.data | filter:search | orderBy : taxname">
+
+                                                                    <td><label class="checkbox">
+                                                                            <input type="checkbox" name="selectedtax" value="{{tax.id}}" ng-model="selectedtax"
+                                                                               ng-checked="(selectedtax.indexOf(tax.id) != '-1')"    ng-click="prepareTax(tax.id)">
+                                                                        <i></i>{{tax.taxname}}
+                                                                       </label>
+                                                                    </td>
+                                                                    <td>{{tax.taxrate}}</td>
+                                                                </tr>    
+
+                                                            </table>
+                                                        </section>
+                                                        </div>
+                                                  <input type="hidden" ng-model="applytype" value="WARD"/>
+                            <footer>
+                                <button class="btn btn-primary" ng-click="wardCreateCost()">
+                                        Submit
+                                </button>
+			</footer>   
+                                </div>
+                                               			               
+				            </form>
+									
+
+								</div>
+				<!-- end widget div ward -->
+                                <!-- start widget room -->
+                                             <div ng-show="showRoom" >
+                                                 <form class="smart-form">
+                                                        <header>{{selectedtitle}}
+                                                            <section class="col-md-4 pull-right">
+                                                                    <div class="btn btn-group-vertical pull-right"> 
+                                                                        <a href="javascript:void(0);" class="btn btn-primary pull-right" ng-click="roomCreateCost()"> <hr>Submit :- Create Cost Mapping<br/><hr> </a>
+                                                                    </div>
+                                                            </section>    
+                                                        </header>
+                                                     <br/>
+                                                     <fieldset>
+                                                         <div class="row col-md-15">
+                                                             <section class="col col-md-2">
+                                                                 <label class="label">Effective Date</label>
+                                                             </section>
+                                                              <section class="col col-md-4">
+                                                                  <div class="input">
+                                                                    <input type="date" ng-model="reffectivedate" placeholder="Effective Date" required class="form-control datepicker" data-dateformat="dd/mm/yy">
+                                                                  </div>
+                                                             </section>
+
+                                                         </div>
+                                                     </fieldset> 
+                                                      <div class="col-md-15">      
+                                                               <div class="row"> 
+                                                                <section class="col col-md-3" style="padding-right:0px;">
+
+                                                                    <label class="select">
+
+                                                                        <select class="input" name="servicestype" id="servicestype" ng-model="roomid">
+                                                                        <option value="">---Please Select Room---</option> 
+                                                                        <option ng-repeat = "item in existingRoomsList.responseMessageDetails.data" value="{{item.id}}">{{item.roomname}}</option> 
+                                                                      </select>
+                                                                    </label>
+
+                                                            </section> 
+                                                                <section class="col col-md-4">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <tr>
+                                                                           <th>Charges Name</th><th>Charges Cost {Rs}</th>
+                                                                        </tr>
+                                                                        <tr  ng-repeat="charges in existingCharges.responseMessageDetails.data | filter:search | orderBy : chargesname">
+
+                                                                            <td><label class="checkbox">
+
+                                                                                    <input type="checkbox" name="selectedcharges" value="{{charges.id}}" 
+                                                                                          ng-checked="(selectedcharges.indexOf(charges.id) != '-1')"  ng-model="selectedcharges" ng-click="prepareCharges(charges.id)">
+                                                                                            <i></i>{{charges.chargename}}
+                                                                               </label>
+                                                                            </td>
+                                                                            <td>{{charges.chargebleamount}}</td>
+
+                                                                        </tr>    
+
+                                                                    </table>
+                                                                </section>
+                                                                    <section class="col col-md-4">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <tr>
+                                                                           <th>Tax Name</th><th>Tax Percent {%}</th>
+                                                                        </tr>
+                                                                        <tr  ng-repeat="tax in existingTax.responseMessageDetails.data | filter:search | orderBy : taxname">
+
+                                                                            <td><label class="checkbox">
+                                                                                    <input type="checkbox" name="selectedtax" value="{{tax.id}}" ng-model="selectedtax"
+                                                                                       ng-checked="(selectedtax.indexOf(tax.id) != '-1')"    ng-click="prepareTax(tax.id)">
+                                                                                <i></i>{{tax.taxname}}
+                                                                               </label>
+                                                                            </td>
+                                                                            <td>{{tax.taxrate}}</td>
+                                                                        </tr>    
+
+                                                                    </table>
+                                                                </section>
+                                                                </div>
+                                                          <input type="hidden" ng-model="applytype" value="ROOM"/>
+                                    <footer>
+                                        <button class="btn btn-primary" ng-click="roomCreateCost()">
+                                                Submit
+                                        </button>
+                                </footer>   
+                                        </div>
+
+                                                    </form>
+
+
+                                                                        </div>
+								<!-- end widget div room -->                                        
+                                <!-- start widget Service -->
+                                             <div ng-show="showService" >
+                                                 <form class="smart-form">
+                                                        <header>{{selectedtitle}}
+                                                            <section class="col-md-4 pull-right">
+                                                                    <div class="btn btn-group-vertical pull-right"> 
+                                                                        <a href="javascript:void(0);" class="btn btn-primary pull-right" ng-click="serviceCreateCost()"> <hr>Submit :- Create Cost Mapping<br/><hr> </a>
+                                                                    </div>
+                                                            </section>    
+                                                        </header>
+                                                     <br/>
+                                                     <fieldset>
+                                                         <div class="row col-md-15">
+                                                             <section class="col col-md-2">
+                                                                 <label class="label">Effective Date</label>
+                                                             </section>
+                                                              <section class="col col-md-4">
+                                                                  <div class="input">
+                                                                    <input type="date" ng-model="seffectivedate" placeholder="Effective Date" required class="form-control datepicker" data-dateformat="dd/mm/yy">
+                                                                  </div>
+                                                             </section>
+
+                                                         </div>
+                                                     </fieldset> 
+                                                      <div class="col-md-15">      
+                                                               <div class="row"> 
+                                                                <section class="col col-md-3" style="padding-right:0px;">
+
+                                                                    <label class="select">
+                                                                        <select class="input" name="servicestype" id="servicestype" ng-model="serviceid">
+                                                                        <option value="">---Please Select Service---</option> 
+                                                                        <option ng-repeat = "item in existingServicesList.responseMessageDetails.data" value="{{item.id}}">{{item.servicesname}}</option> 
+                                                                      </select>
+                                                                    </label>
+
+                                                            </section> 
+                                                                <section class="col col-md-4">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <tr>
+                                                                           <th>Charges Name</th><th>Charges Cost {Rs}</th>
+                                                                        </tr>
+                                                                        <tr  ng-repeat="charges in existingCharges.responseMessageDetails.data | filter:search | orderBy : chargesname">
+
+                                                                            <td><label class="checkbox">
+
+                                                                                    <input type="checkbox" name="selectedcharges" value="{{charges.id}}" 
+                                                                                          ng-checked="(selectedcharges.indexOf(charges.id) != '-1')"  ng-model="selectedcharges" ng-click="prepareCharges(charges.id)">
+                                                                                            <i></i>{{charges.chargename}}
+                                                                               </label>
+                                                                            </td>
+                                                                            <td>{{charges.chargebleamount}}</td>
+
+                                                                        </tr>    
+
+                                                                    </table>
+                                                                </section>
+                                                                    <section class="col col-md-4">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <tr>
+                                                                           <th>Tax Name</th><th>Tax Percent {%}</th>
+                                                                        </tr>
+                                                                        <tr  ng-repeat="tax in existingTax.responseMessageDetails.data | filter:search | orderBy : taxname">
+
+                                                                            <td><label class="checkbox">
+                                                                                    <input type="checkbox" name="selectedtax" value="{{tax.id}}" ng-model="selectedtax"
+                                                                                       ng-checked="(selectedtax.indexOf(tax.id) != '-1')"    ng-click="prepareTax(tax.id)">
+                                                                                <i></i>{{tax.taxname}}
+                                                                               </label>
+                                                                            </td>
+                                                                            <td>{{tax.taxrate}}</td>
+                                                                        </tr>    
+
+                                                                    </table>
+                                                                </section>
+                                                                </div>
+                                                          <input type="hidden" ng-model="applytype" value="SERVICE"/>
+                                    <footer>
+                                        <button class="btn btn-primary" ng-click="serviceCreateCost()">
+                                                Submit
+                                        </button>
+                                </footer>   
+                                        </div>
+
+                                                    </form>
+
+
+                                                                        </div>
+								<!-- end widget div Service -->                                        
+                                 <!-- start widget Operation -->
+                                             <div ng-show="showOperation" >
+                                                 <form class="smart-form">
+                                                        <header>{{selectedtitle}}
+                                                            <section class="col-md-4 pull-right">
+                                                                    <div class="btn btn-group-vertical pull-right"> 
+                                                                        <a href="javascript:void(0);" class="btn btn-primary pull-right" ng-click="operationCreateCost()"> <hr>Submit :- Create Cost Mapping<br/><hr> </a>
+                                                                    </div>
+                                                            </section>    
+                                                        </header>
+                                                     <br/>
+                                                     <fieldset>
+                                                         <div class="row col-md-15">
+                                                             <section class="col col-md-2">
+                                                                 <label class="label">Effective Date</label>
+                                                             </section>
+                                                              <section class="col col-md-4">
+                                                                  <div class="input">
+                                                                    <input type="date" ng-model="oeffectivedate" placeholder="Effective Date" required class="form-control datepicker" data-dateformat="dd/mm/yy">
+                                                                  </div>
+                                                             </section>
+
+                                                         </div>
+                                                     </fieldset> 
+                                                      <div class="col-md-15">      
+                                                               <div class="row"> 
+                                                                <section class="col col-md-3" style="padding-right:0px;">
+
+                                                                    <label class="select">
+                                                                        <select class="input" name="servicestype" id="servicestype" ng-model="serviceid">
+                                                                        <option value="">---Please Select Service---</option> 
+                                                                        <option ng-repeat = "item in existingOperationList.responseMessageDetails.data" value="{{item.id}}">{{item.operationname}}</option> 
+                                                                      </select>
+                                                                    </label>
+
+                                                            </section> 
+                                                                <section class="col col-md-4">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <tr>
+                                                                           <th>Charges Name</th><th>Charges Cost {Rs}</th>
+                                                                        </tr>
+                                                                        <tr  ng-repeat="charges in existingCharges.responseMessageDetails.data | filter:search | orderBy : chargesname">
+
+                                                                            <td><label class="checkbox">
+
+                                                                                    <input type="checkbox" name="selectedcharges" value="{{charges.id}}" 
+                                                                                          ng-checked="(selectedcharges.indexOf(charges.id) != '-1')"  ng-model="selectedcharges" ng-click="prepareCharges(charges.id)">
+                                                                                            <i></i>{{charges.chargename}}
+                                                                               </label>
+                                                                            </td>
+                                                                            <td>{{charges.chargebleamount}}</td>
+
+                                                                        </tr>    
+
+                                                                    </table>
+                                                                </section>
+                                                                    <section class="col col-md-4">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <tr>
+                                                                           <th>Tax Name</th><th>Tax Percent {%}</th>
+                                                                        </tr>
+                                                                        <tr  ng-repeat="tax in existingTax.responseMessageDetails.data | filter:search | orderBy : taxname">
+
+                                                                            <td><label class="checkbox">
+                                                                                    <input type="checkbox" name="selectedtax" value="{{tax.id}}" ng-model="selectedtax"
+                                                                                       ng-checked="(selectedtax.indexOf(tax.id) != '-1')"    ng-click="prepareTax(tax.id)">
+                                                                                <i></i>{{tax.taxname}}
+                                                                               </label>
+                                                                            </td>
+                                                                            <td>{{tax.taxrate}}</td>
+                                                                        </tr>    
+
+                                                                    </table>
+                                                                </section>
+                                                                </div>
+                                                          <input type="hidden" ng-model="applytype" value="OPERATION"/>
+                                    <footer>
+                                        <button class="btn btn-primary" ng-click="operationCreateCost()">
+                                                Submit
+                                        </button>
+                                </footer>   
+                                        </div>
+
+                                                    </form>
+
+
+                                                                        </div>
+								<!-- end widget div Service -->                                                                                                                                
+                                                                
+                                                                
+							</div>
+							<!-- end widget -->
+
+						</article>
+
+					
+
+<!-- end row -->
+
+     
+                        
+                    
+				</section>
+				<!-- end widget grid -->
+                
+                
+			</div>
+			<!-- END MAIN CONTENT -->
+                        {{newroomtype}}
+                        <modal title="Create New Room Type" visible="showModal">
+                                                      
+                              <div class="form-group">
+                                <label for="roomtype">Room Type</label>
+                                <input type="roomtype" class="form-control" id="roomtype" placeholder="New Room Type" ng-model="newroomtype.roomtype"/>
+                              </div>
+                                <button type="button" class="btn btn-u-blue " ng-click="addNewRoomType()">Submit</button>
+                           </modal>
+
+		</div>
+
+  

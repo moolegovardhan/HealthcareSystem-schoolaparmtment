@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TO DO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        
+        $message .= '<table width="100%">';
+         $message .= '<tr><td colspan="2">'.$hospitalData[0]->hosiptalname.'</td></tr> <tr> <td colspan="2">'.$hospitalData[0]->addressline1.'</td></tr>';
+         $message .= ' <tr> <td colspan="2">'.$hospitalData[0]->addressline2.'</td></tr>';
+         $message .= '<tr> <td colspan="2">'."Phone #".$hospitalData[0]->mobile.'</td></tr>';
+        $message .= '<tr><td colspan="2"><hr/></td></tr><tr><td colspan="2">'."DR ".$appointmentDetails[0]->DoctorName.'</td></tr>';
+       $message .= '<tr><td colspan="2"><hr/></td> </tr><tr>';
+        $message .= '<td colspan="2" align="right">'.$appointmentDetails[0]->AppointmentDate.'</td></tr><tr><td width="40%">Patient Name : </td>';
+           $message .= '<td width="60%" align="left"><i>'.$appointmentDetails[0]->PatientName." (".$patientData[0]->gender.")".'</i></td> </tr>';   
+          
+        
+        $message .= '<tr> <td colspan="2">'.$patientData[0]->addressline1.'</td> </tr>';
+        $message .= '<tr> <td colspan="2">'.$patientData[0]->addressline2.'</td> </tr>';
+        $message .= '<tr><td colspan="2"><hr/></td>';
+        $message .= '</tr><tr><td colspan="2"><br/></td></tr> <tr>';
+        $message .= ' <td colspan="2"><b>Doctor Observations : </b></td> </tr><tr> <td colspan="2"><i>'.$presDetails[0]->description.'</i></td>';
+        $message .= ' </tr> <tr><td colspan="2"><br/></td></tr><tr><td colspan="2"><b>Initial Diagnosis : </b></td> </tr>';
+        $message .= ' <tr><td colspan="2">'; 
+                  foreach($diseasesDetails as $diseases){
+                  $message .= "<p><i>".$diseases->namevalue." </i></p>";
+                  }  
+                   
+        $message .= '</td></tr><tr> <td colspan="2"><br/></td></tr><tr>';
+        $message .= ' <td colspan="2"><b>Medical Test Prescribed : </b></td></tr><tr> <td colspan="2"><i> ';
+                      foreach($testDetails as $test){
+                        $message .= "<p><i>".$test->testname." </i></p>";
+                        } 
+        $message .= ' </td></tr><tr> <td colspan="2"><br/></td></tr><tr><td colspan="2"><hr/></td></tr><tr>';
+        $message .= ' <td colspan="2"><b>Medicines Name : </b></td> </tr><tr> <td colspan="2"><hr/></td></tr>';
+        $message .= ' <tr><td colspan="2">';
+                     
+                    // <!-- Medicine Tables start-->
+                     
+        $message .= ' <table  border="0" style="border-color:#F6D8CE;width:100%" cellpadding="0" cellspacing="0"  id="PatientMedicineTable">';
+        $message .= ' <thead><tr><th class="tg-uhkr">Medicine Name</th><th class="tg-uhkr">Usage</th><th class="tg-uhkr" colspan="2">Morning {Breakfast}</th>';
+        $message .= ' <th class="tg-uhkr" colspan="2">Afternoon {Meal}</th> <th class="tg-uhkr" colspan="2">Night {Meal}</th>';
+        $message .= ' <th class="tg-uhkr">Days #</th></tr>';
+        $message .= ' <tr><td class="tg-031e"></td><td class="tg-031e"></td><td class="tg-5y5n" align="center">Before</td>';
+        $message .= ' <td class="tg-5y5n" align="center">After</td><td class="tg-5y5n" align="center">Before</td>';
+        $message .= ' <td class="tg-5y5n" align="center">After</td><td class="tg-5y5n" align="center">Before</td>';
+         $message .= ' <td class="tg-5y5n" align="center">After</td><td class="tg-031e" align="center"></td></tr>';
+        $message .= ' <tr><td colspan="9"><hr/></td></tr> </thead><tbody><tr>';
+                foreach($medicines as $data){
+        $message .= ' <td class="tg-031e" align="center">'.$data->medicinename.'</td><td class="tg-031e" align="center">'.$data->dosage.'</td>';
+        $message .= ' <td class="tg-5y5n" align="center">'.$data->MBF.'</td> <td class="tg-5y5n" align="center">'.$data->MAF.'</td> <td class="tg-5y5n" align="center">'.$data->ABF.'</td>';
+        $message .= ' <td class="tg-5y5n" align="center">'.$data->AAF.'</td><td class="tg-5y5n" align="center">'.$data->EBF.'</td><td class="tg-5y5n" align="center">'.$data->EAF.'</td>';
+        $message .= ' <td class="tg-031e" align="center">'.$data->noofdays.'</td> </tr></tbody></table>';
+                     
+               }      
+                    // <!-- Medicine Table end -->
+        $message .= ' </td> </tr><tr><td colspan="2"><br/></td></tr><tr> <td colspan="2"><hr/></td></tr>';
+        $message .= ' <tr><td colspan="2"><br/></td></tr><tr><td colspan="2"><b>Next Appointment Date : </b></td>';
+        $message .= ' </tr><tr><td colspan="2"><i>'.$presDetails[0]->nextappointmentdt.'</i></td></tr></table>';   
+        
+        
+        
+        
+    </body>
+</html>

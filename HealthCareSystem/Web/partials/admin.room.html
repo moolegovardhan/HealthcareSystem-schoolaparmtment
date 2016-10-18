@@ -1,0 +1,184 @@
+<div id="main" role="main" class="js-main">
+
+			<!-- RIBBON -->
+			<div id="ribbon">
+                <!-- breadcrumb -->
+				<ol class="breadcrumb">
+					<li>Home</li><li>Settings</li><li>Room</li>
+				</ol>
+				
+                                <div class="pull-right">
+                                    <b>
+                                        <i>
+                                            <font color="#FFFFFF">
+                                                {{status}}
+                                            </font>
+                                        </i>
+                                    </b> 
+
+                                </div>     
+			</div>
+			<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content" class="row">
+
+		
+				<!-- widget grid -->
+				<section id="widget-grid" class="">
+                    <!-- row -->
+
+                            <article class="col-sm-12 col-md-12">
+                                    <!-- new widget -->
+                                    <div class="jarviswidget jarviswidget-color-blue" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false">
+                                            <header>
+                                                    <span class="widget-icon">  </span>
+                                                    <h2> Room Management </h2>
+
+                                            </header>
+                                            <!-- widget div-->
+                                            <div>
+                                         <form class="smart-form">
+				                <header>Room Details</header>
+				                <fieldset>
+                                                    <div class="row">
+                                                        
+                                                         <section class="col col-md-4">
+                                                            <label class="label">Room Name</label>
+                                                                <label class="input"> <i class="icon-append fa fa-navicon"></i>
+                                                                        <input type="text" name="roomname" placeholder="Room Name"  ng-model="newroom.roomname">
+                                                                </label>
+                                                        </section>
+                                                        <section class="col col-md-3" style="padding-right 0px;">
+                                                            <label class="label">Room Type</label>
+                                                            <label class="select">
+                                                                <select class="input" name="roomtype" id="roomtype" ng-model="newroom.roomtype">
+                                                                <option value="">---Please select---</option> <!-- not selected / blank option -->
+                                                                <option ng-repeat = "item in existingRoomTypeList.responseMessageDetails.data" value="{{item.id}}">{{item.roomtype}}</option> 
+                                                             
+                                                              </select>
+                                                            </label>
+                                                            
+                                                        </section>
+                                                        <section class="col" style="padding-left: 0px;">
+                                                            <label class="label"><br/></label>
+                                                            <img src="img/add.jpg" ng-click="callmodal()" width="30px" height="30px">
+                                                        </section>
+                                                         <section class="col col-md-4">
+                                                            <label class="label">Room Count</label>
+                                                            <label class="input"> <i class="icon-append fa fa-navicon"></i>
+                                                                       <input type="text" min="1" max="6"  name="totalrooms" placeholder="Room Count" ng-model="newroom.totalrooms">
+                                                               </label>
+                                                       </section>
+                                                    </div>			
+                                                    <div class="row">
+                                                        <section class="col col-md-4">
+                                                            <label class="label">Room Cost</label>
+                                                            <label class="input"> <i class="icon-append fa fa-money"></i>
+                                                                       <input type="text" min="1" max="6"  name="roomcost" placeholder="Each Room Cost" ng-model="newroom.roomcost">
+                                                               </label>
+                                                       </section>
+                                                        <section class="col col-md-4">
+                                                            <label class="label">Discount</label>
+                                                            <label class="select">
+                                                            <select class="input" name="discount" id="discount" ng-model="newroom.discount">
+                                                                <option value="">---Please select---</option> <!-- not selected / blank option -->
+                                                                <option value="Y">Yes</option> <!-- interpolation -->
+                                                                <option value="N">No</option>
+                                                              </select>
+                                                            </label>
+                                                        </section>
+                                                       
+                                                         <!--section class="col col-md-4">
+                                                            <label class="label">Charges</label>
+                                                            <label class="select">
+                                                                <select class="input" name="discount" id="discount" ng-model="newroom.charges" multiple="true" size="2">
+                                                                <option value="">---Please select---</option> 
+                                                                <option value="Y">Admin Charges</option> 
+                                                                <option value="N">A/C Charges</option>
+                                                                 <option value="Nur">Nurse Charges</option>
+                                                              </select>
+                                                            </label>
+                                                        </section-->
+                                                    </div>
+                                               						
+							</fieldset>
+                            <footer>
+                                <button class="btn btn-primary" ng-click="submitRoom()">
+                                        Submit
+                                </button>
+			</footer>                        
+				            </form>
+									
+
+								</div>
+								<!-- end widget div -->
+							</div>
+							<!-- end widget -->
+
+						</article>
+
+					
+
+<!-- end row -->
+
+        <article class="col-sm-12 col-md-12">
+                <!-- new widget -->
+                <div class="jarviswidget jarviswidget-color-blue" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false">
+
+                        <header>
+                                <span class="widget-icon"> <i class="fa fa-check txt-color-white"></i> </span>
+                                <h2> Select Room </h2>
+
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+                           
+    <table class="table table-striped table-bordered">
+        <tr>
+           <th>Room Name</th><th> Room Type</th><th>Total Rooms</th><th>Room Cost</th><th>Discount</th><th>Action</th>
+        </tr>
+        <tr  ng-repeat="room in existingRoomList.responseMessageDetails.data | filter:search | orderBy : roomname">
+           
+            <td>{{room.roomname}}</td>
+            <td>{{room.roomtype}}</td>
+            <td>{{room.totalrooms}}</td>
+             <td>{{room.roomcost}}</td>
+              <td>{{room.discount}}</td>
+            <td><button class="btn btn-danger"  ng-click="remove($index,room.id)"><span class="glyphicon glyphicon-trash"></span></button> &nbsp;&nbsp;
+                <button class="btn btn-success"  ng-click="edit($index,room)" ><span class="glyphicon glyphicon-edit"></span></button></td>
+        </tr>
+        
+    </table>
+	
+                            
+                            
+
+         </div>
+								<!-- end widget div -->
+							</div>
+							<!-- end widget -->
+
+						</article>
+                        
+                    
+				</section>
+				<!-- end widget grid -->
+                
+                
+			</div>
+			<!-- END MAIN CONTENT -->
+                       
+                        <modal title="Create New Room Type" visible="showModal">
+                                                      
+                              <div class="form-group">
+                                <label for="roomtype">Room Type</label>
+                                <input type="roomtype" class="form-control" id="roomtype" placeholder="New Room Type" ng-model="newroomtype.roomtype"/>
+                              </div>
+                                <button type="button" class="btn btn-u-blue " ng-click="addNewRoomType()">Submit</button>
+                           </modal>
+
+		</div>
+
+  

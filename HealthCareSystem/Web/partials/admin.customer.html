@@ -1,0 +1,124 @@
+<div id="main" role="main">
+
+			<!-- RIBBON -->
+			<div id="ribbon">
+                <!-- breadcrumb -->
+				<ol class="breadcrumb">
+					<li>Home</li><li>Masters</li><li>Customer</li>
+				</ol>
+				<!-- end breadcrumb -->
+
+				<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:
+
+				<span class="ribbon-button-alignment pull-right">
+				<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+				</span> -->
+
+			</div>
+			<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+						<h1 class="page-title txt-color-blueDark"><i class="fa fa-lg fa-fw fa-puzzle-piece"></i> Masters <span>> Customer</span></h1>
+					</div>
+					
+				</div>
+				<!-- widget grid -->
+				<section id="widget-grid" class="">
+                    <!-- row -->
+					<div class="row">
+						<article class="col-sm-12 col-md-12 col-lg-12">
+							<!-- new widget -->
+							<div class="jarviswidget jarviswidget-color-blue" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false">
+
+								<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+
+								-->
+
+								<header>
+									<span class="widget-icon">  </span>
+									<h2> Customer Management </h2>
+									<!-- <div class="widget-toolbar">
+									add: non-hidden - to disable auto hide
+
+									</div>-->
+								</header>
+
+								<!-- widget div-->
+								<div>
+                            <form class="smart-form">
+				                <header>Customer Details</header>
+				                <fieldset>
+								<div class="row">
+									<section class="col col-6">
+									    <label class="label">Customer Name</label>
+										<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+											<input type="text" name="company" placeholder="Customer Name" ng-model="newcustomer.name">
+										</label>
+									</section>
+									<section class="col col-6">
+                                       <label class="label">Address</label>
+                    					<label class="textarea textarea-resizable"> 		<textarea rows="3" class="custom-scroll" placeholder="Address" ng-model="newcustomer.address"></textarea> 
+										</label>
+								    </section>
+								</div>
+                                <div class="row">
+									<section class="col col-6">
+									<label class="label">Email</label>    
+										<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+											<input type="email" name="email" placeholder="E-mail" ng-model="newcustomer.email">
+										</label>
+									</section>
+									<section class="col col-6">
+									    <label class="label">Mobile Number</label>
+										<label class="input"> <i class="icon-append fa fa-phone"></i>
+											<input type="tel" name="mobile" placeholder="Mobile Number" data-mask="(999) 999-9999" ng-model="newcustomer.mobile">
+										</label>
+									</section>
+								</div>								
+							</fieldset>
+                            <footer>
+												<button class="btn btn-primary" ng-click="saveCategory()">
+													Submit
+												</button>
+												
+											</footer>                        
+				            </form>
+									
+
+								</div>
+								<!-- end widget div -->
+							</div>
+							<!-- end widget -->
+
+						</article>
+
+					</div>
+
+					<!-- end row -->
+
+				</section>
+				<!-- end widget grid -->
+
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>

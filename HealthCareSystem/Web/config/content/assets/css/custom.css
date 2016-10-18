@@ -1,0 +1,9 @@
+/* Add here all your css styles (customizations) */
+.page-range{margin:20px 20px 0px 0px; float:right;}
+#searchMedicinesResults{display:none;}
+.medicine-name{cursor:pointer;}
+#gmedicines, #dmedicines{display:inline-block; width:91%;}
+#showMedicineSerachPop, #showDoctorMedicineSerachPop{cursor:pointer;}
+.search-with-char {margin:0px 20px 20px 20px; padding:0px; list-style:none; float:left;}
+.search-with-char li {margin:0px 10px 0px 0px; padding:0px; list-style:none; float:left;}
+.search-with-char li a{padding:7px 10px; background:#bce8f1; color:#000; width:auto; height:30px; text-align:center; float:left;}

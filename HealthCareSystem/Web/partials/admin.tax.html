@@ -1,0 +1,131 @@
+<div id="main" role="main">
+
+			<!-- RIBBON -->
+			<div id="ribbon">
+                <!-- breadcrumb -->
+				<ol class="breadcrumb">
+					<li>Home</li><li>Settings</li><li>Tax</li>
+				</ol>
+				
+                                <div class="pull-right">
+                                    <b>
+                                        <i>
+                                            <font color="#FFFFFF">
+                                                {{status}}
+                                            </font>
+                                        </i>
+                                    </b> 
+
+                                </div>     
+			</div>
+			<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content" class="row">
+
+		
+				<!-- widget grid -->
+				<section id="widget-grid" class="">
+                    <!-- row -->
+
+                            <article class="col-sm-12 col-md-6">
+                                    <!-- new widget -->
+                                    <div class="jarviswidget jarviswidget-color-blue" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false">
+                                            <header>
+                                                    <span class="widget-icon">  </span>
+                                                    <h2> Tax Management </h2>
+
+                                            </header>
+                                            <!-- widget div-->
+                                            <div>
+                                    <form class="smart-form">
+				                <header>Tax Details</header>
+				                <fieldset>
+								
+                                                <section class="col-md-8">
+                                                    <label class="label">Tax Name</label>
+                                                        <label class="input"> <i class="icon-append fa fa-navicon"></i>
+                                                                <input type="text" name="company" placeholder="Tax Name" ng-model="newtax.taxname">
+                                                        </label>
+                                                </section>
+                                                <section class="col-md-8">
+                                      <label class="label">Description</label>
+                                <label class="textarea textarea-resizable"> 	
+                                    <textarea rows="3" class="custom-scroll" placeholder="Description" ng-model="newtax.taxdesc"></textarea> 
+                                                        </label>
+                                            </section>
+
+                                                <section class="col-md-8">
+                                                <label class="label">Tax Rate</label>    
+                                                        <label class="input"> <i class="icon-append fa fa-money"></i>
+                                                                <input type="text" name="rate" placeholder="Tax Rate" ng-model="newtax.taxrate">
+                                                        </label>
+                                                </section>
+													
+							</fieldset>
+                            <footer>
+                                <button class="btn btn-primary" ng-click="submitTax()">
+                                        Submit
+                                </button>
+			</footer>                        
+				            </form>
+									
+
+								</div>
+								<!-- end widget div -->
+							</div>
+							<!-- end widget -->
+
+						</article>
+
+					
+
+<!-- end row -->
+
+        <article class="col-sm-12 col-md-6">
+                <!-- new widget -->
+                <div class="jarviswidget jarviswidget-color-blue" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false">
+
+                        <header>
+                                <span class="widget-icon"> <i class="fa fa-check txt-color-white"></i> </span>
+                                <h2> Select Tax </h2>
+
+                        </header>
+ 
+                        <!-- widget div-->
+                        <div>
+                         
+                            <table class="table table-striped table-bordered">
+                                <tr>
+                                   <th>Tax Name</th><th>Description</th><th>Rate</th><th>Action</th>
+                                </tr>
+                                <tr  ng-repeat="tax in existingTaxList.responseMessageDetails.data | filter:search | orderBy : taxname">
+
+                                    <td>{{tax.taxname}}</td>
+                                    <td>{{tax.taxdesc}}</td>
+                                    <td>{{tax.taxrate}}</td>
+                                    <td><button class="btn btn-danger"  ng-click="remove($index,tax.id)"><span class="glyphicon glyphicon-trash"></span></button> &nbsp;&nbsp;
+                                        <button class="btn btn-success"  ng-click="edit($index,tax)" ><span class="glyphicon glyphicon-edit"></span></button></td>
+                                </tr>
+
+                            </table>
+	
+                            
+                            
+
+         </div>
+								<!-- end widget div -->
+							</div>
+							<!-- end widget -->
+
+						</article>
+                        
+                    
+				</section>
+				<!-- end widget grid -->
+                
+                
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>
